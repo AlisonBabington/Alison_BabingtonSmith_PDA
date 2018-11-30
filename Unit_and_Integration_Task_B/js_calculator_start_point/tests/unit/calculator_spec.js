@@ -25,4 +25,43 @@ describe('calculator', function () {
     assert.strictEqual(calculator.runningTotal, 3);
   })
 
+  it('it should multiply', function(){
+    calculator.previousTotal = 3;
+    calculator.multiply(5);
+    assert.strictEqual(calculator.runningTotal, 15);
+  })
+  it('it should divide', function(){
+    calculator.previousTotal = 21;
+    calculator.divide(7);
+    assert.strictEqual(calculator.runningTotal, 3);
+  })
+
+  it('it should concatenate multiple number button clicks', function(){
+    calculator.numberClick(4);
+    calculator.numberClick(2);
+    calculator.numberClick(1);
+    calculator.numberClick(5)
+    assert.strictEqual(calculator.runningTotal, 4215);
+  })
+  it('it should chain multiple operations together', function(){
+    calculator.numberClick(1);
+    calculator.operatorClick('+');
+    calculator.numberClick(2);
+    calculator.operatorClick('*');
+    calculator.numberClick(3);
+    calculator.operatorClick('-');
+    calculator.numberClick(4);
+    calculator.operatorClick('=');
+    assert.strictEqual(calculator.runningTotal, 5);
+  })
+  it('it should clear the running total without affecting the calculation', function(){
+    calculator.numberClick(4);
+    calculator.operatorClick('+');
+    calculator.numberClick(9);
+    calculator.clearClick();
+    calculator.numberClick(5);
+    calculator.operatorClick('=');
+    assert.strictEqual(calculator.runningTotal, 9);
+  })
+
 });
