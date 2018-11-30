@@ -13,10 +13,16 @@ describe('calculator', function () {
     calculator = new Calculator()
   });
 
-  it('it should add 1 to 4 and get 5', function(){
+  it('it should add', function(){
     calculator.previousTotal = 1;
     calculator.add(4);
     assert.strictEqual(calculator.runningTotal, 5);
+  })
+
+  it('it should subtract', function(){
+    calculator.previousTotal = 7;
+    calculator.subtract(4);
+    assert.strictEqual(calculator.runningTotal, 3);
   })
 
 });
